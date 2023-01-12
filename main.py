@@ -15,10 +15,10 @@ with open('name.csv', 'r') as file:
         rows.append(row)
 
 #open certificate template
-    try:
-        img = Image.open('award.png')
-    except IOError:
-        pass
+try:
+    img = Image.open('award.png')
+except IOError:
+    pass
 
 #get certificate width and height
 w,h=img.size
