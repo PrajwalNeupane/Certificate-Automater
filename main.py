@@ -4,8 +4,9 @@ from PIL import ImageFont
 import csv 
 import time 
 
-start = time.time()
 
+#initialize timer
+start = time.time()
 
 #read data from name.csv to get name list 
 rows = []
@@ -23,7 +24,12 @@ except IOError:
 #get certificate width and height
 w,h=img.size
 
-counter = 0 
+#initialize counter
+counter = 0
+
+#ask user for output folder name 
+output_folder = input('Output folder name: ')
+
 #loop through each name in name list 
 for i in range(len(rows)):
     open certificate template
@@ -47,12 +53,14 @@ for i in range(len(rows)):
     I1.text(((165/297)*w, (145/210)*h), contribution, font=f2, fill=(0, 0, 0) )
 
     #save image 
-    img.save(f'./certificates2/img{name}.png')
+    img.save(f'./{output_folder}/img{name}.png')
 
     counter += 1
 
+#stop timer
 end = time.time()
 
+#print execution data 
 print(f'Time: {end-start}')
 print(f'Certificates Printed: {counter}')
 
