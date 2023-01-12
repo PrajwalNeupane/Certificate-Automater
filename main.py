@@ -2,6 +2,9 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import csv 
+import time 
+
+start = time.time()
 
 
 #read data from name.csv to get name list 
@@ -11,14 +14,19 @@ with open('name.csv', 'r') as file:
     for row in csvreader:
         rows.append(row)
 
+#open certificate template
+    try:
+        img = Image.open('award.png')
+    except IOError:
+        pass
 
 #get certificate width and height
 w,h=img.size
 
-
+counter = 0 
 #loop through each name in name list 
 for i in range(len(rows)):
-    #open certificate template
+    open certificate template
     try:
         img = Image.open('award.png')
     except IOError:
@@ -39,5 +47,12 @@ for i in range(len(rows)):
     I1.text(((165/297)*w, (145/210)*h), contribution, font=f2, fill=(0, 0, 0) )
 
     #save image 
-    img.save(f'./certificates/img{name}.png')
+    img.save(f'./certificates2/img{name}.png')
+
+    counter += 1
+
+end = time.time()
+
+print(f'Time: {end-start}')
+print(f'Certificates Printed: {counter}')
 
